@@ -1,24 +1,17 @@
 import numpy as np
-import pickle
-from pathlib import Path
-
 import streamlit as st
+import pickle
 
-MODEL_PATH = Path(__file__).resolve().parent / "models" / "trained_model.sav"
-
-with MODEL_PATH.open("rb") as model_file:
-    loaded_model = pickle.load(model_file)
+loaded_model = pickle.load(open('Diabetes_Prediction_ML/models/trained_model.sav', 'rb'))
 
 # creating function for prediction
 def diabetes_prediction(input_data):
 
     # changing input data into numpy array
-    input_array = np.array(input_data, dtype=float)
+    input_array = np.array(input_data)
 
     # reshape the array as we are predecting for one instane
     input_data_reshape = input_array.reshape(1, -1)
-
-    # Standardize the input data
 
     prediction = loaded_model.predict(input_data_reshape)
     # print(prediction)
