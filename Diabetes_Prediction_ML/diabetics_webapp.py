@@ -1,13 +1,8 @@
 import numpy as np
 import streamlit as st
-from pathlib import Path
 import pickle
 
-BASE_DIR = Path(__file__).parent
-MODEL_PATH = BASE_DIR / "trained_model.sav"
-
-with open(MODEL_PATH, "rb") as file:
-    loaded_model = pickle.load(file)
+loaded_model = pickle.load(open('/home/shubham/python-projects/Diabetes_Prediction_ML/trained_model.sav', 'rb'))
 
 # creating function for prediction
 def diabetes_prediction(input_data):
