@@ -2,9 +2,10 @@ import numpy as np
 import pickle
 
 # loading the saved model
-loaded_model = pickle.load(open('Diabetes_Prediction_ML/trained_model.sav', 'rb'))
+loaded_model = pickle.load(open('/home/shubham/python-projects/Diabetes_Prediction_ML/trained_model.sav', 'rb'))
 
-input_data = (1,89,66,23,94,28.1,0.167,21)
+input_data = (5,116,74,0,0,25.6,0.201,30)
+
 
 # changing input data into numpy array
 input_array = np.array(input_data)
@@ -12,12 +13,10 @@ input_array = np.array(input_data)
 # reshape the array as we are predecting for one instane
 input_data_reshape = input_array.reshape(1, -1)
 
-# Standardize the input data
-
 prediction = loaded_model.predict(input_data_reshape)
 print(prediction)
 
-if (prediction[0]==0):
+if prediction[0] == 0:
     print('The Person is Non-Diabetics.')
 else:
     print('The Person is Diabetics.')
