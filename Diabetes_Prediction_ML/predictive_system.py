@@ -1,8 +1,13 @@
 import numpy as np
 import pickle
+from pathlib import Path
+
+BASE_DIR = Path(__file__).resolve().parent
+MODEL_PATH = BASE_DIR / "models" / "trained_model.sav"
 
 # loading the saved model
-loaded_model = pickle.load(open('/home/shubham/python-projects/Diabetes_Prediction_ML/trained_model.sav', 'rb'))
+with MODEL_PATH.open("rb") as model_file:
+    loaded_model = pickle.load(model_file)
 
 input_data = (5,116,74,0,0,25.6,0.201,30)
 
